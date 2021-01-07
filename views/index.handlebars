@@ -1,0 +1,77 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>The Krusty Krab! </h1>
+        <p>Ahoy!</p>
+        <br>
+        
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="newburger">Menu</label>
+                  
+                    <select data-placeholder="" id="newburger" name="burger">
+                        <option value="Nothing Selected" selected>Please Select a burger</option>
+                        <option value="KrabbyPatty">Krabby Patty</option>
+                        <option value="Jelly Patty">Jelly Patty</option>
+                        <option value="King-Size Ultra Krabby Supreme">King-Size Ultra Krabby Supreme</option>
+                        <option value="Giant Krabby Patty">Giant Krabby Patty</option>
+                        
+                    </select>
+
+                    <button type="submit" class="btn btn-success" id="paybutton">
+                        <span class="	fa fa-money"></span>
+                    </button>
+                </div>
+            </form>
+        </panel>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="leftside"><strong>Order Ready </strong>
+                    <p>Eat Da Burger!</p>
+                </div>
+                <div class="panel-body">
+
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fa fa-cutlery"></span></button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="rightside"><strong>Burger is Devoured!</strong>
+                    <p>Please clean up your mess!</p>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="trashburger btn btn-danger" id="trashbutton" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
+                        <hr>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
